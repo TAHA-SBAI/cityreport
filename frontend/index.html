@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CityReport — Signalement citoyen intelligent</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // Charge une vraie photo de ville marocaine en fond ; si aucune source
+      // n'est joignable (hors-ligne), le dégradé CSS de secours reste affiché.
+      (function () {
+        var sources = [
+          "https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=2000&q=80",
+          "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=2000&q=80",
+          "https://source.unsplash.com/1600x900/?morocco,city,medina"
+        ];
+        var i = 0;
+        function tryNext() {
+          if (i >= sources.length) return;
+          var url = sources[i++];
+          var img = new Image();
+          img.onload = function () {
+            document.documentElement.style.setProperty("--city-photo", "url('" + url + "')");
+          };
+          img.onerror = tryNext;
+          img.src = url;
+        }
+        tryNext();
+      })();
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

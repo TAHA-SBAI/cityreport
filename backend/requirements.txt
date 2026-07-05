@@ -1,0 +1,9 @@
+Flask==3.0.3
+Flask-Cors==4.0.1
+SQLAlchemy==2.0.32
+scikit-learn==1.5.1
+pandas==2.2.2
+numpy==1.26.4
+joblib==1.4.2
+gunicorn==21.2.0
+psycopg2-binary==2.9.9

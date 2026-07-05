@@ -1,0 +1,47 @@
+============================================================
+  ENTRAÎNEMENT DU CLASSIFIEUR CityReport
+============================================================
+Jeu de données : 645 exemples, 5 catégories
+  Entraînement : 483 exemples
+  Test         : 162 exemples
+
+Comparaison des modèles (validation croisée 5 plis) :
+------------------------------------------------------------
+  Naive Bayes              : 0.983 (± 0.014)
+  Régression Logistique    : 0.977 (± 0.018)
+  SVM linéaire             : 0.975 (± 0.021)
+
+➜ Meilleur modèle retenu : Naive Bayes
+
+============================================================
+  ÉVALUATION FINALE SUR LE JEU DE TEST
+============================================================
+Exactitude (accuracy) : 98.8%
+
+Rapport de classification (précision / rappel / F1) :
+------------------------------------------------------------
+               precision    recall  f1-score   support
+
+Espaces verts       0.97      1.00      0.98        32
+     Propreté       0.97      1.00      0.98        32
+     Sécurité       1.00      0.97      0.98        32
+       Voirie       1.00      0.97      0.98        33
+    Éclairage       1.00      1.00      1.00        33
+
+     accuracy                           0.99       162
+    macro avg       0.99      0.99      0.99       162
+ weighted avg       0.99      0.99      0.99       162
+
+Matrice de confusion (lignes = réel, colonnes = prédit) :
+------------------------------------------------------------
+                  Espaces   Propreté  Sécurité    Voirie  Éclairag
+Espaces verts           32         0         0         0         0
+Propreté                 0        32         0         0         0
+Sécurité                 1         0        31         0         0
+Voirie                   0         1         0        32         0
+Éclairage                0         0         0         0        33
+
+Modèle final ré-entraîné sur les 645 exemples et sauvegardé :
+  /home/claude/cityreport/backend/ml/model.joblib
+
+Ce modèle est maintenant utilisé automatiquement par l'application.
